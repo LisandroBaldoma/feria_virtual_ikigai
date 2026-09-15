@@ -6,6 +6,7 @@ Route::inertia('/', 'welcome')->name('home');
 
 Route::view('/home', 'home')->name('reference');
 
+Route::inertia('/component-showcase', 'component-showcase')->name('component-showcase');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::inertia('dashboard', 'dashboard')->name('dashboard');
