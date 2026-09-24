@@ -1,4 +1,5 @@
-import { StoreCard, type StoreCardProps } from '@/components/ui/store-card';
+import { StoreCard } from '@/components/ui/store-card';
+import type { StoreCardProps } from '@/components/ui/store-card';
 
 const featuredStores: StoreCardProps[] = [
     {

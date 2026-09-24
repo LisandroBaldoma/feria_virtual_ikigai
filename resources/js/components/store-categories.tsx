@@ -1,7 +1,5 @@
-import {
-    CategoryCard,
-    type CategoryCardProps,
-} from '@/components/ui/category-card';
+import { CategoryCard } from '@/components/ui/category-card';
+import type { CategoryCardProps } from '@/components/ui/category-card';
 
 const storeCategories: CategoryCardProps[] = [
     {

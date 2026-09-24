@@ -1,7 +1,5 @@
-import {
-    ProductCard,
-    type ProductCardProps,
-} from '@/components/ui/product-card';
+import { ProductCard } from '@/components/ui/product-card';
+import type { ProductCardProps } from '@/components/ui/product-card';
 
 const featuredProducts: ProductCardProps[] = [
     {
