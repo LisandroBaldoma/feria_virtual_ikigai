@@ -1,14 +1,12 @@
+import AppLogo from '@/components/branding/AppLogo';
+
 export default function MainFooter() {
     return (
         <footer className="w-full bg-surface-container-low text-on-surface">
             <div className="mx-auto max-w-7xl px-6 py-16 lg:px-12">
                 <div className="mb-16 grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-12">
                     <div className="flex flex-col gap-space-md lg:col-span-4">
-                        <div className="flex items-center gap-space-sm">
-                            <span className="font-headline-md text-headline-md text-on-surface">
-                                Feria Ikigai
-                            </span>
-                        </div>
+                        <AppLogo className="h-12 w-auto" />
                         <p className="max-w-sm font-body-md text-body-md text-on-surface-variant">
                             Un santuario digital para la artesanía con alma,
                             donde creadores de obras físicas y digitales

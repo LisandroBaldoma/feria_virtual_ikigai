@@ -1,3 +1,5 @@
+import AppLogo from '@/components/branding/AppLogo';
+
 export default function MainHeader() {
     return (
         <header className="fixed top-0 right-0 left-0 z-50 w-full bg-surface/90 shadow-[0_1px_8px_rgba(0,0,0,0.04)] backdrop-blur-xl">
@@ -8,14 +10,7 @@ export default function MainHeader() {
                         data-path="recorrer-feria"
                         href="#"
                     >
-                        <img
-                            alt="Ikigai Logo"
-                            className="h-8 w-auto object-contain"
-                            src="https://lh3.googleusercontent.com/aida/AEtjO1Uc4Cj-7Oyk3C7zlDGLW-hPWmOWLcvCK6KLKBlN0r4_NK1lVEsMw8Lj8RNfmpM-q5sXvs8agc2iUEzC17emXqASh-uJls0kejzel784NTEqBAOONz_NKKtD6CPSMsqPCaljzYSLCgmqGZHMMznGtn6pyX8lmDD84qSs3xZWOKirq-Y51kR0kU-aZur1xCl7j1Qyd1fg2ns-mviovMHuLSLepKnfTVRmyvei9tRFfP1VwNjnoQhpNp-Rep0"
-                        />
-                        <span className="font-headline-sm text-headline-sm tracking-tight text-on-surface transition-colors group-hover:text-primary">
-                            Feria Ikigai
-                        </span>
+                        <AppLogo className="h-10 w-auto shrink-0" />
                     </a>
                 </div>
                 <nav
