@@ -16,6 +16,7 @@ createInertiaApp({
                 name === 'home' ||
                 name === 'product-detail-digital' ||
                 name === 'product-detail-fisico' ||
+                name === 'store-front' ||
                 name === 'tiendas-stores':
                 return null;
             case name.startsWith('auth/'):

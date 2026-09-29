@@ -13,6 +13,7 @@ Route::view('/tiendas-stores', 'tiendas-stores')->name('tiendas-stores');
 Route::inertia('/home-react', 'home')->name('home-react');
 Route::inertia('/product-detail-digital-react', 'product-detail-digital')->name('product-detail-digital-react');
 Route::inertia('/product-detail-fisico-react', 'product-detail-fisico')->name('product-detail-fisico-react');
+Route::inertia('/store-front-react', 'store-front')->name('store-front-react');
 Route::inertia('/tiendas-stores-react', 'tiendas-stores')->name('tiendas-stores-react');
 
 Route::inertia('/component-showcase', 'component-showcase')->name('component-showcase');
