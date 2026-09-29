@@ -7,10 +7,13 @@ Route::inertia('/', 'welcome')->name('home');
 Route::view('/home', 'home')->name('reference');
 Route::view('/product-detail-digital', 'product-detail-digital')->name('product-detail-digital');
 Route::view('/product-detail-fisico', 'product-detail-fisico')->name('product-detail-fisico');
+Route::view('/store-front', 'store-front')->name('store-front');
+Route::view('/tiendas-stores', 'tiendas-stores')->name('tiendas-stores');
 
 Route::inertia('/home-react', 'home')->name('home-react');
 Route::inertia('/product-detail-digital-react', 'product-detail-digital')->name('product-detail-digital-react');
 Route::inertia('/product-detail-fisico-react', 'product-detail-fisico')->name('product-detail-fisico-react');
+Route::inertia('/tiendas-stores-react', 'tiendas-stores')->name('tiendas-stores-react');
 
 Route::inertia('/component-showcase', 'component-showcase')->name('component-showcase');
 
