@@ -80,10 +80,10 @@ export default function PhysicalProductTechnicalDetails() {
                                     1. Torneado en reposo
                                 </strong>
                                 <p>
-                                    Torneado alzado lentamente durante 40 minutos
-                                    en rueda tradicional. Secado en sombra durante
-                                    12 días para evitar tensiones moleculares en
-                                    el barro.
+                                    Torneado alzado lentamente durante 40
+                                    minutos en rueda tradicional. Secado en
+                                    sombra durante 12 días para evitar tensiones
+                                    moleculares en el barro.
                                 </p>
                             </div>
                             <div>
@@ -133,11 +133,11 @@ export default function PhysicalProductTechnicalDetails() {
                             </p>
                             <p>
                                 <strong>Garantía Ikigai:</strong> Si la pieza
-                                sufre algún daño durante el transporte, basta con
-                                enviarnos una fotografía en las primeras 48 horas
-                                tras la entrega y Valentina elaborará una nueva
-                                jarra prioritaria o te reembolsaremos el 100% de
-                                inmediato.
+                                sufre algún daño durante el transporte, basta
+                                con enviarnos una fotografía en las primeras 48
+                                horas tras la entrega y Valentina elaborará una
+                                nueva jarra prioritaria o te reembolsaremos el
+                                100% de inmediato.
                             </p>
                         </div>
                     </details>
@@ -157,9 +157,10 @@ export default function PhysicalProductTechnicalDetails() {
                             <p>
                                 Cada jarra incluye una tarjeta botánica de papel
                                 de algodón confeccionado a mano, firmada por la
-                                autora Valentina Lagos, detallando la fecha exacta
-                                de salida de horno, la procedencia del lote de
-                                arcilla y el número de serie de la edición.
+                                autora Valentina Lagos, detallando la fecha
+                                exacta de salida de horno, la procedencia del
+                                lote de arcilla y el número de serie de la
+                                edición.
                             </p>
                         </div>
                     </details>

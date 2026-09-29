@@ -53,9 +53,8 @@ export default function PhysicalProductPurchasePanel({
     const [finish, setFinish] = useState(0);
     const [isFavorite, setIsFavorite] = useState(false);
     const [quantity, setQuantity] = useState(1);
-    const [shippingDestination, setShippingDestination] = useState<
-        keyof typeof shippingOptions
-    >('araucania');
+    const [shippingDestination, setShippingDestination] =
+        useState<keyof typeof shippingOptions>('araucania');
     const shipping = shippingOptions[shippingDestination];
 
     function updateQuantity(change: number) {
@@ -193,7 +192,7 @@ export default function PhysicalProductPurchasePanel({
                     </span>
                 </div>
                 <FeriaButton
-                    className="w-full rounded-lg bg-gradient-to-r from-primary to-primary-container px-6 py-3.5 font-body text-[15px] font-semibold text-on-primary shadow-[0_4px_16px_rgba(9,76,178,0.25)] active:scale-[0.99] hover:opacity-95"
+                    className="w-full rounded-lg bg-gradient-to-r from-primary to-primary-container px-6 py-3.5 font-body text-[15px] font-semibold text-on-primary shadow-[0_4px_16px_rgba(9,76,178,0.25)] hover:opacity-95 active:scale-[0.99]"
                     size="block"
                     type="button"
                     onClick={() =>
@@ -231,7 +230,7 @@ export default function PhysicalProductPurchasePanel({
                     >
                         <span
                             className={`material-symbols-outlined text-[18px] ${
-                                isFavorite ? 'icon-filled text-primary' : ''
+                                isFavorite ? 'text-primary icon-filled' : ''
                             }`}
                         >
                             {isFavorite ? 'bookmark' : 'bookmark_border'}
@@ -257,7 +256,8 @@ export default function PhysicalProductPurchasePanel({
                         value={shippingDestination}
                         onChange={(event) =>
                             setShippingDestination(
-                                event.target.value as keyof typeof shippingOptions,
+                                event.target
+                                    .value as keyof typeof shippingOptions,
                             )
                         }
                     >

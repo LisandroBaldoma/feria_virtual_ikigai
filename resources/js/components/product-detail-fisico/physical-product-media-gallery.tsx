@@ -82,7 +82,7 @@ export default function PhysicalProductMediaGallery() {
                         Textura mineral al tacto
                     </span>
                     <button
-                        className="pointer-events-auto inline-flex items-center gap-1.5 rounded-lg bg-surface-container-lowest/95 px-4 py-2 font-body text-[12.5px] font-medium text-on-surface shadow-md backdrop-blur-md transition-all active:scale-95 hover:bg-surface-container-lowest"
+                        className="pointer-events-auto inline-flex items-center gap-1.5 rounded-lg bg-surface-container-lowest/95 px-4 py-2 font-body text-[12.5px] font-medium text-on-surface shadow-md backdrop-blur-md transition-all hover:bg-surface-container-lowest active:scale-95"
                         type="button"
                         onClick={() =>
                             window.alert(
@@ -129,9 +129,9 @@ export default function PhysicalProductMediaGallery() {
                     </span>
                     <p className="font-body text-on-surface-variant">
                         Al ser horneada en atmósfera reductora a 1.250°C, cada
-                        jarra presenta variaciones irrepetibles en el depósito de
-                        ceniza y gradación del ocre. Ninguna pieza es idéntica a
-                        otra.
+                        jarra presenta variaciones irrepetibles en el depósito
+                        de ceniza y gradación del ocre. Ninguna pieza es
+                        idéntica a otra.
                     </p>
                 </div>
             </div>

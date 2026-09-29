@@ -26,8 +26,12 @@ export default function StoreFront() {
     const [toast, setToast] = useState<ToastMessage | null>(null);
 
     useEffect(() => {
-        if (!toast) return;
+        if (!toast) {
+            return;
+        }
+
         const timeout = window.setTimeout(() => setToast(null), 3200);
+
         return () => window.clearTimeout(timeout);
     }, [toast]);
 
@@ -47,6 +51,7 @@ export default function StoreFront() {
                     : priceFilter === '15to30'
                       ? product.price <= 30000 && product.price >= 15000
                       : product.price > 30000);
+
             return (
                 categoryMatches &&
                 priceMatches &&
@@ -82,8 +87,10 @@ export default function StoreFront() {
     function share() {
         if (!navigator.clipboard) {
             showToast('Comparte el enlace de esta página desde tu navegador.');
+
             return;
         }
+
         navigator.clipboard
             .writeText(window.location.href)
             .then(() =>

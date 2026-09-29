@@ -44,11 +44,11 @@ export default function PhysicalArtisanProfile() {
                             Valentina Lagos · Taller Barro Mestizo
                         </h2>
                         <blockquote className="my-1 border-l-2 border-primary/40 py-1 pl-4 font-headline text-[15px] leading-relaxed text-secondary italic lg:text-[16px]">
-                            "Moldeamos a mano en torno con arcillas sedimentarias
-                            del sur de Chile y cenizas vivas del volcán
-                            Villarrica. La cocción en leña a 1.250°C hace que cada
-                            huella y soplo de fuego quede cristalizado para
-                            siempre."
+                            "Moldeamos a mano en torno con arcillas
+                            sedimentarias del sur de Chile y cenizas vivas del
+                            volcán Villarrica. La cocción en leña a 1.250°C hace
+                            que cada huella y soplo de fuego quede cristalizado
+                            para siempre."
                         </blockquote>
                         <div className="flex flex-wrap items-center justify-center gap-6 pt-2 text-[13px] text-on-surface-variant md:justify-start">
                             <div>

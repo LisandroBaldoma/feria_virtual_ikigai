@@ -1,11 +1,12 @@
-import { useState, type FormEvent } from 'react';
 import { X } from 'lucide-react';
+import { useState } from 'react';
+import type { FormEvent } from 'react';
 
+import { storeImages } from '@/components/store-front/data';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
 import { FeriaButton } from '@/components/ui/feria-button';
 import { FeriaIconButton } from '@/components/ui/feria-icon-button';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { storeImages } from '@/components/store-front/data';
 
 interface InquiryDialogProps {
     open: boolean;
@@ -24,6 +25,7 @@ export function InquiryDialog({
         setFields({ name: '', email: '', message: '' });
         onSubmit();
     }
+
     return (
         <Dialog open={open} onOpenChange={onOpenChange}>
             <DialogContent

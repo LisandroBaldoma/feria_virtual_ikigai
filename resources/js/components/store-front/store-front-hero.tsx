@@ -7,11 +7,11 @@ import {
     Share2,
 } from 'lucide-react';
 
+import { storeImages } from '@/components/store-front/data';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { FeriaBadge } from '@/components/ui/feria-badge';
 import { FeriaButton } from '@/components/ui/feria-button';
 import { FeriaIconButton } from '@/components/ui/feria-icon-button';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { storeImages } from '@/components/store-front/data';
 
 interface StoreFrontHeroProps {
     following: boolean;

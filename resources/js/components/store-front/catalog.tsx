@@ -7,9 +7,6 @@ import {
     ShoppingCart,
 } from 'lucide-react';
 
-import { FeriaBadge } from '@/components/ui/feria-badge';
-import { FeriaButton } from '@/components/ui/feria-button';
-import { FeriaIconButton } from '@/components/ui/feria-icon-button';
 import { products } from '@/components/store-front/data';
 import type {
     PriceFilter,
@@ -17,6 +14,9 @@ import type {
     SortOption,
     StoreProduct,
 } from '@/components/store-front/types';
+import { FeriaBadge } from '@/components/ui/feria-badge';
+import { FeriaButton } from '@/components/ui/feria-button';
+import { FeriaIconButton } from '@/components/ui/feria-icon-button';
 import { cn } from '@/lib/utils';
 
 const formatPrice = (price: number) => `$${price.toLocaleString('es-CL')} CLP`;
@@ -173,6 +173,7 @@ export function StoreCatalog(props: StoreCatalogProps) {
         { id: 'limited', label: 'Series Limitadas (4)' },
         { id: 'custom-order', label: 'Piezas a Pedido (0)' },
     ];
+
     return (
         <>
             <section className="bg-surface-container-lowest py-16">

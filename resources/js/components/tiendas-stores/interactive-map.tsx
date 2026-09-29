@@ -1,12 +1,12 @@
 import type { Dispatch, RefObject, SetStateAction } from 'react';
 
-import { FeriaButton } from '@/components/ui/feria-button';
-import { FeriaIconButton } from '@/components/ui/feria-icon-button';
 import type {
     District,
     DistrictId,
     Stand,
 } from '@/components/tiendas-stores/types';
+import { FeriaButton } from '@/components/ui/feria-button';
+import { FeriaIconButton } from '@/components/ui/feria-icon-button';
 
 interface InteractiveMapProps {
     activeDistrict: District;
@@ -56,8 +56,10 @@ export function InteractiveMap({
                         (event.target as HTMLElement).closest(
                             'button, a, input',
                         )
-                    )
+                    ) {
                         return;
+                    }
+
                     event.currentTarget.setPointerCapture(event.pointerId);
                     setDragStart({
                         x: event.clientX - pan.x,
@@ -65,7 +67,10 @@ export function InteractiveMap({
                     });
                 }}
                 onPointerMove={(event) => {
-                    if (!dragStart) return;
+                    if (!dragStart) {
+                        return;
+                    }
+
                     const maxPan = 400 * zoom;
                     setPan({
                         x: Math.max(
@@ -121,6 +126,7 @@ export function InteractiveMap({
                             (item) => item.id === stand.id,
                         );
                         const isActive = stand.id === activeStandId;
+
                         return (
                             <button
                                 key={stand.id}
@@ -415,6 +421,7 @@ function MapDistrictLabels({ district }: { district: DistrictId }) {
             'botanica',
         ],
     ] as const;
+
     return labels.map(([position, sector, title, description, color, id]) => (
         <div
             key={id}

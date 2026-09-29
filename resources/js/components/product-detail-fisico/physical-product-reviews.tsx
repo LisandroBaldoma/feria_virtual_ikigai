@@ -5,24 +5,21 @@ const reviews = [
     {
         initials: 'CR',
         name: 'Camila Riquelme',
-        quote:
-            '"Llegó a Santiago en 48 horas. El paquete olía a madera sureña y venía protegido como una reliquia. La textura de la ceniza al tacto tiene una calidez que ninguna foto alcanza a transmitir del todo."',
+        quote: '"Llegó a Santiago en 48 horas. El paquete olía a madera sureña y venía protegido como una reliquia. La textura de la ceniza al tacto tiene una calidez que ninguna foto alcanza a transmitir del todo."',
         rating: 5,
         subtitle: 'Compradora Verificada · Providencia, Santiago',
     },
     {
         initials: 'ME',
         name: 'Martín Edwards',
-        quote:
-            '"El asa es asombrosamente cómoda. Llena de agua tiene un equilibrio perfecto para servir en la mesa. Es utilitaria pero cuando no se usa funciona como una escultura en la repisa."',
+        quote: '"El asa es asombrosamente cómoda. Llena de agua tiene un equilibrio perfecto para servir en la mesa. Es utilitaria pero cuando no se usa funciona como una escultura en la repisa."',
         rating: 5,
         subtitle: 'Comprador Verificado · Zapallar',
     },
     {
         initials: 'FO',
         name: 'Francisca Olavarría',
-        quote:
-            '"El certificado firmado y la explicación de los minerales del volcán le dan un significado inmenso. Comprar en Feria Ikigai realmente se siente como visitar el taller en Pucón."',
+        quote: '"El certificado firmado y la explicación de los minerales del volcán le dan un significado inmenso. Comprar en Feria Ikigai realmente se siente como visitar el taller en Pucón."',
         rating: 5,
         subtitle: 'Compradora Verificada · Concepción',
     },
