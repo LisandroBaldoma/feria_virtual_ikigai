@@ -9,6 +9,7 @@ type ProductAvailabilityTone = 'muted' | 'secondary' | 'tertiary';
 interface ProductCardImage {
     src: string;
     alt: string;
+    dataAlt?: string;
 }
 
 interface ProductCardBaseProps {
@@ -44,15 +45,26 @@ interface RelatedProductCardProps extends ProductCardBaseProps {
     onAction?: () => void;
 }
 
+interface RelatedPhysicalProductCardProps extends ProductCardBaseProps {
+    variant: 'relatedPhysical';
+    actionIcon: string;
+    actionLabel: string;
+    currency: string;
+    onAction?: () => void;
+}
+
 type ProductCardProps =
     | FeaturedProductCardProps
     | CatalogProductCardProps
-    | RelatedProductCardProps;
+    | RelatedProductCardProps
+    | RelatedPhysicalProductCardProps;
 
 function ProductCard(props: ProductCardProps) {
     const badgeVariant =
         props.variant === 'related'
             ? 'category'
+            : props.variant === 'relatedPhysical'
+              ? 'compactSurface'
             : props.variant === 'featured'
             ? props.productType === 'physical'
                 ? 'productSurface'
@@ -66,6 +78,8 @@ function ProductCard(props: ProductCardProps) {
             className={cn(
                 props.variant === 'related'
                     ? 'group flex flex-col overflow-hidden rounded-2xl bg-surface-container-low transition-all hover:shadow-md'
+                    : props.variant === 'relatedPhysical'
+                      ? 'group flex flex-col overflow-hidden rounded-xl bg-surface-container-lowest shadow-sm transition-all hover:shadow-md'
                     : 'flex flex-col overflow-hidden rounded-2xl bg-surface-container-lowest shadow-sm transition-all duration-300 hover:shadow-xl',
                 props.className,
             )}
@@ -81,9 +95,11 @@ function ProductCard(props: ProductCardProps) {
                 <img
                     src={props.image.src}
                     alt={props.image.alt}
+                    data-alt={props.image.dataAlt}
                     className={cn(
                         'h-full w-full object-cover transition-transform',
-                        props.variant === 'related'
+                        props.variant === 'related' ||
+                        props.variant === 'relatedPhysical'
                             ? 'duration-500 group-hover:scale-105'
                             : 'duration-300 hover:scale-105',
                     )}
@@ -97,7 +113,9 @@ function ProductCard(props: ProductCardProps) {
                         props.variant === 'related' &&
                             (props.productType === 'physical'
                                 ? 'text-tertiary'
-                                : 'text-primary'),
+                                 : 'text-primary'),
+                        props.variant === 'relatedPhysical' &&
+                            'rounded bg-surface-container-lowest/90 px-2 py-0.5 font-label text-[10px] font-bold tracking-wide text-on-surface uppercase backdrop-blur-sm',
                     )}
                 >
                     {props.variant === 'featured' && (
@@ -173,6 +191,34 @@ function ProductCard(props: ProductCardProps) {
                             variant="action"
                             aria-label={props.actionLabel}
                             className="size-8"
+                            onClick={props.onAction}
+                        >
+                            <span className="material-symbols-outlined text-[18px]">
+                                {props.actionIcon}
+                            </span>
+                        </FeriaIconButton>
+                    </div>
+                </div>
+            ) : props.variant === 'relatedPhysical' ? (
+                <div className="flex flex-1 flex-col justify-between gap-3 p-4">
+                    <div>
+                        <span className="font-body text-[11.5px] text-secondary">
+                            {props.seller}
+                        </span>
+                        <h3 className="mt-0.5 font-headline text-[15px] font-semibold text-on-surface transition-colors group-hover:text-primary">
+                            {props.title}
+                        </h3>
+                    </div>
+                    <div className="flex items-center justify-between pt-2">
+                        <span className="font-headline text-[16px] font-bold text-on-surface">
+                            {props.price}{' '}
+                            <span className="text-[11px] font-normal text-secondary">
+                                {props.currency}
+                            </span>
+                        </span>
+                        <FeriaIconButton
+                            variant="action"
+                            aria-label={props.actionLabel}
                             onClick={props.onAction}
                         >
                             <span className="material-symbols-outlined text-[18px]">

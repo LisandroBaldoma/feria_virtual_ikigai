@@ -9,10 +9,10 @@
   <meta content="web_standard" name="shell-type" />
 </head>
 
-<body class="bg-background font-body text-[15px] leading-[24px] text-on-surface antialiased">
+<body class="bg-background font-body-md text-body-md text-on-surface antialiased">
   <header class="fixed top-0 left-0 right-0 w-full z-50 bg-surface/95 backdrop-blur-xl border-b border-outline-variant/30 shadow-[0_1px_8px_rgba(0,0,0,0.03)]">
     <div class="h-20 max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between gap-gutter">
-      <div class="flex items-center gap-space-sm"><a class="flex items-center gap-space-sm group" data-path="recorrer-feria" href="#"><img alt="Ikigai Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1Uc4Cj-7Oyk3C7zlDGLW-hPWmOWLcvCK6KLKBlN0r4_NK1lVEsMw8Lj8RNfmpM-q5sXvs8agc2iUEzC17emXqASh-uJls0kejzel784NTEqBAOONz_NKKtD6CPSMsqPCaljzYSLCgmqGZHMMznGtn6pyX8lmDD84qSs3xZWOKirq-Y51kR0kU-aZur1xCl7j1Qyd1fg2ns-mviovMHuLSLepKnfTVRmyvei9tRFfP1VwNjnoQhpNp-Rep0" /><span class="font-headline font-medium text-[22px] leading-[30px] text-on-surface tracking-tight group-hover:text-primary-container transition-colors">Feria Ikigai</span></a></div>
+      <div class="flex items-center gap-space-sm"><a class="flex items-center gap-space-sm group" data-path="recorrer-feria" href="#"><img alt="Ikigai Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1Uc4Cj-7Oyk3C7zlDGLW-hPWmOWLcvCK6KLKBlN0r4_NK1lVEsMw8Lj8RNfmpM-q5sXvs8agc2iUEzC17emXqASh-uJls0kejzel784NTEqBAOONz_NKKtD6CPSMsqPCaljzYSLCgmqGZHMMznGtn6pyX8lmDD84qSs3xZWOKirq-Y51kR0kU-aZur1xCl7j1Qyd1fg2ns-mviovMHuLSLepKnfTVRmyvei9tRFfP1VwNjnoQhpNp-Rep0" /><span class="font-headline-sm text-headline-sm text-on-surface tracking-tight group-hover:text-primary-container transition-colors">Feria Ikigai</span></a></div>
       <nav class="hidden md:flex items-center gap-space-md lg:gap-space-lg" data-active-classes="bg-surface-container text-primary-container font-semibold"><a class="px-space-sm py-space-xs rounded-lg font-body font-medium text-[15px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="recorrer-feria" href="#">Recorrer Feria</a><a class="px-space-sm py-space-xs rounded-lg font-body font-medium text-[15px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="stands-y-tiendas" href="#">Stands y Tiendas</a><a class="px-space-sm py-space-xs rounded-lg font-body font-medium text-[15px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="categorias" href="#">Categorías</a><a class="px-space-sm py-space-xs rounded-lg font-body font-medium text-[15px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="historias-de-creadores" href="#">Historias de Creadores</a></nav>
       <div class="flex items-center gap-space-md"><a class="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-primary-container hover:bg-primary text-on-primary font-body font-semibold text-[15px] shadow-[0_4px_14px_rgba(51,102,204,0.22)] hover:shadow-[0_6px_20px_rgba(9,76,178,0.3)] transition-all" data-path="abrir-mi-stand" href="#">Abrir mi Stand</a><a class="flex items-center rounded-full p-0.5 hover:ring-2 hover:ring-primary-container/50 transition-all" data-path="perfil-artesano" href="#"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSkqBDdCwtmEUSTvSwtTMke6eIDU2789iiZ9a3qiNTkoY4R88-dFpmWbBx5vZBAI1cW-ojbaalIb4yK703bad1HS3ppMtPy8aRjHq2-HLp6_CSpbEjAzEl5bfpnRIrxqzhV009efyj8CL8hE1rb-62VBaaM0ROUUuKwmSOjdemc6T2G7PO7uc_AAzWlhnKvC4IA_oR_ytajF6HUosBgnDcwVXuiZoNOY0rgzVOUxJznyj4pp57sD_o_Q" /></a></div>
     </div>
@@ -129,11 +129,11 @@
                 </h1>
                 <div class="flex items-center gap-3 pt-1">
                   <div class="flex items-center text-tertiary">
-                    <span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
-                    <span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
-                    <span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
-                    <span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
-                    <span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                    <span class="material-symbols-outlined icon-filled text-[18px]">star</span>
+                    <span class="material-symbols-outlined icon-filled text-[18px]">star</span>
+                    <span class="material-symbols-outlined icon-filled text-[18px]">star</span>
+                    <span class="material-symbols-outlined icon-filled text-[18px]">star</span>
+                    <span class="material-symbols-outlined icon-filled text-[18px]">star</span>
                   </div>
                   <span class="font-body font-semibold text-[13.5px] text-on-surface">5.0</span>
                   <span class="text-on-surface-variant text-[13px]">(32 reseñas verificadas de compradores)</span>
@@ -398,11 +398,11 @@
             </div>
             <div class="flex items-center gap-2">
               <div class="flex text-tertiary">
-                <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
-                <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
-                <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
-                <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
-                <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="material-symbols-outlined icon-filled text-[20px]">star</span>
+                <span class="material-symbols-outlined icon-filled text-[20px]">star</span>
+                <span class="material-symbols-outlined icon-filled text-[20px]">star</span>
+                <span class="material-symbols-outlined icon-filled text-[20px]">star</span>
+                <span class="material-symbols-outlined icon-filled text-[20px]">star</span>
               </div>
               <span class="font-headline font-semibold text-on-surface text-[15px]">5.0 / 5.0</span>
               <span class="text-secondary text-[13px]">(100% embalajes recibidos intactos)</span>
@@ -414,11 +414,11 @@
             <div class="p-6 rounded-xl bg-surface-container-lowest flex flex-col justify-between gap-5 shadow-sm">
               <div class="flex flex-col gap-3">
                 <div class="flex text-tertiary">
-                  <span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
-                  <span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
-                  <span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
-                  <span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
-                  <span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                  <span class="material-symbols-outlined icon-filled text-[16px]">star</span>
+                  <span class="material-symbols-outlined icon-filled text-[16px]">star</span>
+                  <span class="material-symbols-outlined icon-filled text-[16px]">star</span>
+                  <span class="material-symbols-outlined icon-filled text-[16px]">star</span>
+                  <span class="material-symbols-outlined icon-filled text-[16px]">star</span>
                 </div>
                 <p class="font-body text-[13.5px] text-on-surface-variant leading-relaxed">
                   "Llegó a Santiago en 48 horas. El paquete olía a madera sureña y venía protegido como una reliquia. La textura de la ceniza al tacto tiene una calidez que ninguna foto alcanza a transmitir del todo."
@@ -438,11 +438,11 @@
             <div class="p-6 rounded-xl bg-surface-container-lowest flex flex-col justify-between gap-5 shadow-sm">
               <div class="flex flex-col gap-3">
                 <div class="flex text-tertiary">
-                  <span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
-                  <span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
-                  <span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
-                  <span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
-                  <span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                  <span class="material-symbols-outlined icon-filled text-[16px]">star</span>
+                  <span class="material-symbols-outlined icon-filled text-[16px]">star</span>
+                  <span class="material-symbols-outlined icon-filled text-[16px]">star</span>
+                  <span class="material-symbols-outlined icon-filled text-[16px]">star</span>
+                  <span class="material-symbols-outlined icon-filled text-[16px]">star</span>
                 </div>
                 <p class="font-body text-[13.5px] text-on-surface-variant leading-relaxed">
                   "El asa es asombrosamente cómoda. Llena de agua tiene un equilibrio perfecto para servir en la mesa. Es utilitaria pero cuando no se usa funciona como una escultura en la repisa."
@@ -462,11 +462,11 @@
             <div class="p-6 rounded-xl bg-surface-container-lowest flex flex-col justify-between gap-5 shadow-sm">
               <div class="flex flex-col gap-3">
                 <div class="flex text-tertiary">
-                  <span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
-                  <span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
-                  <span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
-                  <span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
-                  <span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                  <span class="material-symbols-outlined icon-filled text-[16px]">star</span>
+                  <span class="material-symbols-outlined icon-filled text-[16px]">star</span>
+                  <span class="material-symbols-outlined icon-filled text-[16px]">star</span>
+                  <span class="material-symbols-outlined icon-filled text-[16px]">star</span>
+                  <span class="material-symbols-outlined icon-filled text-[16px]">star</span>
                 </div>
                 <p class="font-body text-[13.5px] text-on-surface-variant leading-relaxed">
                   "El certificado firmado y la explicación de los minerales del volcán le dan un significado inmenso. Comprar en Feria Ikigai realmente se siente como visitar el taller en Pucón."

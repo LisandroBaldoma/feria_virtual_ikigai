@@ -10,6 +10,7 @@ Route::view('/product-detail-fisico', 'product-detail-fisico')->name('product-de
 
 Route::inertia('/home-react', 'home')->name('home-react');
 Route::inertia('/product-detail-digital-react', 'product-detail-digital')->name('product-detail-digital-react');
+Route::inertia('/product-detail-fisico-react', 'product-detail-fisico')->name('product-detail-fisico-react');
 
 Route::inertia('/component-showcase', 'component-showcase')->name('component-showcase');
 
