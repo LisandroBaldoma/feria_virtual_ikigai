@@ -9,6 +9,7 @@ type ProductAvailabilityTone = 'muted' | 'secondary' | 'tertiary';
 interface ProductCardImage {
     src: string;
     alt: string;
+    dataAlt?: string;
 }
 
 interface ProductCardBaseProps {
@@ -37,11 +38,34 @@ interface CatalogProductCardProps extends ProductCardBaseProps {
     };
 }
 
-type ProductCardProps = FeaturedProductCardProps | CatalogProductCardProps;
+interface RelatedProductCardProps extends ProductCardBaseProps {
+    variant: 'related';
+    actionIcon: string;
+    actionLabel: string;
+    onAction?: () => void;
+}
+
+interface RelatedPhysicalProductCardProps extends ProductCardBaseProps {
+    variant: 'relatedPhysical';
+    actionIcon: string;
+    actionLabel: string;
+    currency: string;
+    onAction?: () => void;
+}
+
+type ProductCardProps =
+    | FeaturedProductCardProps
+    | CatalogProductCardProps
+    | RelatedProductCardProps
+    | RelatedPhysicalProductCardProps;
 
 function ProductCard(props: ProductCardProps) {
     const badgeVariant =
-        props.variant === 'featured'
+        props.variant === 'related'
+            ? 'category'
+            : props.variant === 'relatedPhysical'
+              ? 'compactSurface'
+            : props.variant === 'featured'
             ? props.productType === 'physical'
                 ? 'productSurface'
                 : 'productSecondary'
@@ -52,26 +76,47 @@ function ProductCard(props: ProductCardProps) {
     return (
         <article
             className={cn(
-                'flex flex-col overflow-hidden rounded-2xl bg-surface-container-lowest shadow-sm transition-all duration-300 hover:shadow-xl',
+                props.variant === 'related'
+                    ? 'group flex flex-col overflow-hidden rounded-2xl bg-surface-container-low transition-all hover:shadow-md'
+                    : props.variant === 'relatedPhysical'
+                      ? 'group flex flex-col overflow-hidden rounded-xl bg-surface-container-lowest shadow-sm transition-all hover:shadow-md'
+                    : 'flex flex-col overflow-hidden rounded-2xl bg-surface-container-lowest shadow-sm transition-all duration-300 hover:shadow-xl',
                 props.className,
             )}
         >
             <div
                 className={cn(
                     'relative aspect-square overflow-hidden',
-                    props.variant === 'featured'
-                        ? 'bg-surface-container-high'
-                        : 'bg-surface-container',
+                        props.variant === 'featured'
+                            ? 'bg-surface-container-high'
+                            : 'bg-surface-container',
                 )}
             >
                 <img
                     src={props.image.src}
                     alt={props.image.alt}
-                    className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
+                    data-alt={props.image.dataAlt}
+                    className={cn(
+                        'h-full w-full object-cover transition-transform',
+                        props.variant === 'related' ||
+                        props.variant === 'relatedPhysical'
+                            ? 'duration-500 group-hover:scale-105'
+                            : 'duration-300 hover:scale-105',
+                    )}
                 />
                 <FeriaBadge
                     variant={badgeVariant}
-                    className="absolute top-3 left-3"
+                    className={cn(
+                        'absolute top-3 left-3',
+                        props.variant === 'related' &&
+                            'rounded-full bg-surface-container-lowest/90 px-2.5 py-1 font-label text-[10px] font-bold tracking-wider uppercase backdrop-blur-sm',
+                        props.variant === 'related' &&
+                            (props.productType === 'physical'
+                                ? 'text-tertiary'
+                                 : 'text-primary'),
+                        props.variant === 'relatedPhysical' &&
+                            'rounded bg-surface-container-lowest/90 px-2 py-0.5 font-label text-[10px] font-bold tracking-wide text-on-surface uppercase backdrop-blur-sm',
+                    )}
                 >
                     {props.variant === 'featured' && (
                         <span
@@ -123,6 +168,60 @@ function ProductCard(props: ProductCardProps) {
                             aria-label={props.actionLabel}
                         >
                             <span className="material-symbols-outlined text-base">
+                                {props.actionIcon}
+                            </span>
+                        </FeriaIconButton>
+                    </div>
+                </div>
+            ) : props.variant === 'related' ? (
+                <div className="flex flex-1 flex-col justify-between gap-3 p-5">
+                    <div>
+                        <span className="block font-label text-[11px] text-outline">
+                            {props.seller}
+                        </span>
+                        <h3 className="mt-0.5 line-clamp-2 font-headline text-[15px] font-semibold text-on-surface transition-colors group-hover:text-primary">
+                            {props.title}
+                        </h3>
+                    </div>
+                    <div className="flex items-center justify-between pt-2">
+                        <span className="font-headline text-[16px] font-semibold text-on-surface">
+                            {props.price}
+                        </span>
+                        <FeriaIconButton
+                            variant="action"
+                            aria-label={props.actionLabel}
+                            className="size-8"
+                            onClick={props.onAction}
+                        >
+                            <span className="material-symbols-outlined text-[18px]">
+                                {props.actionIcon}
+                            </span>
+                        </FeriaIconButton>
+                    </div>
+                </div>
+            ) : props.variant === 'relatedPhysical' ? (
+                <div className="flex flex-1 flex-col justify-between gap-3 p-4">
+                    <div>
+                        <span className="font-body text-[11.5px] text-secondary">
+                            {props.seller}
+                        </span>
+                        <h3 className="mt-0.5 font-headline text-[15px] font-semibold text-on-surface transition-colors group-hover:text-primary">
+                            {props.title}
+                        </h3>
+                    </div>
+                    <div className="flex items-center justify-between pt-2">
+                        <span className="font-headline text-[16px] font-bold text-on-surface">
+                            {props.price}{' '}
+                            <span className="text-[11px] font-normal text-secondary">
+                                {props.currency}
+                            </span>
+                        </span>
+                        <FeriaIconButton
+                            variant="action"
+                            aria-label={props.actionLabel}
+                            onClick={props.onAction}
+                        >
+                            <span className="material-symbols-outlined text-[18px]">
                                 {props.actionIcon}
                             </span>
                         </FeriaIconButton>
