@@ -1,12 +1,12 @@
 import { useRef, useState } from 'react';
 
-import PhysicalArtisanProfile from '@/components/physical-artisan-profile';
-import PhysicalProductDetailContext from '@/components/physical-product-detail-context';
-import PhysicalProductMediaGallery from '@/components/physical-product-media-gallery';
-import PhysicalProductPurchasePanel from '@/components/physical-product-purchase-panel';
-import PhysicalProductReviews from '@/components/physical-product-reviews';
-import PhysicalProductTechnicalDetails from '@/components/physical-product-technical-details';
-import PhysicalRelatedProductsSection from '@/components/physical-related-products-section';
+import PhysicalArtisanProfile from '@/components/product-detail-fisico/physical-artisan-profile';
+import PhysicalProductDetailContext from '@/components/product-detail-fisico/physical-product-detail-context';
+import PhysicalProductMediaGallery from '@/components/product-detail-fisico/physical-product-media-gallery';
+import PhysicalProductPurchasePanel from '@/components/product-detail-fisico/physical-product-purchase-panel';
+import PhysicalProductReviews from '@/components/product-detail-fisico/physical-product-reviews';
+import PhysicalProductTechnicalDetails from '@/components/product-detail-fisico/physical-product-technical-details';
+import PhysicalRelatedProductsSection from '@/components/product-detail-fisico/physical-related-products-section';
 import MainLayout from '@/layouts/main-layout';
 
 export default function ProductDetailFisico() {

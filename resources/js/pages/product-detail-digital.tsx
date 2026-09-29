@@ -1,11 +1,11 @@
-import ProductDetailContext from '@/components/product-detail-context';
-import ProductEditorialTabs from '@/components/product-editorial-tabs';
-import ProductMediaGallery from '@/components/product-media-gallery';
-import ProductPurchasePanel from '@/components/product-purchase-panel';
-import ProductReviews from '@/components/product-reviews';
-import ProductSellerSummary from '@/components/product-seller-summary';
-import ProductTechnicalSpecs from '@/components/product-technical-specs';
-import RelatedProductsSection from '@/components/related-products-section';
+import ProductDetailContext from '@/components/product-detail-digital/product-detail-context';
+import ProductEditorialTabs from '@/components/product-detail-digital/product-editorial-tabs';
+import ProductMediaGallery from '@/components/product-detail-digital/product-media-gallery';
+import ProductPurchasePanel from '@/components/product-detail-digital/product-purchase-panel';
+import ProductReviews from '@/components/product-detail-digital/product-reviews';
+import ProductSellerSummary from '@/components/product-detail-digital/product-seller-summary';
+import ProductTechnicalSpecs from '@/components/product-detail-digital/product-technical-specs';
+import RelatedProductsSection from '@/components/product-detail-digital/related-products-section';
 import MainLayout from '@/layouts/main-layout';
 
 export default function ProductDetailDigital() {
