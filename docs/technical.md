@@ -110,7 +110,7 @@ Para esta primera versión se mantienen las siguientes restricciones:
 \- Sin aplicaciones independientes por tenant.  
 \- Sin búsqueda de texto.  
 \- Sin múltiples monedas.  
-\- Sin productos físicos.  
+\- Productos físicos y digitales, separados por el tipo permanente de cada tienda.
 \- Sin productos gratuitos.  
 \- Sin reproducción de archivos dentro de la plataforma.  
 \- Sin reembolsos, cancelaciones ni gestión de disputas.  

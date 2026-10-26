@@ -1,12 +1,27 @@
-import { Head } from '@inertiajs/react';
+import { Head, Link } from '@inertiajs/react';
+import { Button } from '@/components/ui/button';
 import { PlaceholderPattern } from '@/components/ui/placeholder-pattern';
 import { dashboard } from '@/routes';
+import stores from '@/routes/stores';
 
 export default function Dashboard() {
     return (
         <>
             <Head title="Dashboard" />
             <div className="flex h-full flex-1 flex-col gap-4 overflow-x-auto rounded-xl p-4">
+                <div className="bg-card flex items-center justify-between rounded-xl border p-4">
+                    <div>
+                        <h1 className="font-semibold">
+                            Tu espacio de proveedor
+                        </h1>
+                        <p className="text-muted-foreground text-sm">
+                            Creá o administrá la información de tu tienda.
+                        </p>
+                    </div>
+                    <Button asChild>
+                        <Link href={stores.edit()}>Mi tienda</Link>
+                    </Button>
+                </div>
                 <div className="grid auto-rows-min gap-4 md:grid-cols-3">
                     <div className="border-sidebar-border/70 dark:border-sidebar-border relative aspect-video overflow-hidden rounded-xl border">
                         <PlaceholderPattern className="absolute inset-0 size-full stroke-neutral-900/20 dark:stroke-neutral-100/20" />
