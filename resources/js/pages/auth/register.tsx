@@ -8,13 +8,13 @@ import { Label } from '@/components/ui/label';
 import { Spinner } from '@/components/ui/spinner';
 import { login } from '@/routes';
 import { store } from '@/routes/register';
-import { redirect as googleRedirect } from '@/routes/google';
 
 type Props = {
     passwordRules: string;
+    googleRedirectUrl: string;
 };
 
-export default function Register({ passwordRules }: Props) {
+export default function Register({ passwordRules, googleRedirectUrl }: Props) {
     return (
         <>
             <Head title="Register" />
@@ -115,7 +115,7 @@ export default function Register({ passwordRules }: Props) {
                         </div>
 
                         <a
-                            href={googleRedirect.url()}
+                            href={googleRedirectUrl}
                             className="text-foreground text-center text-sm underline underline-offset-4"
                         >
                             Continuar con Google

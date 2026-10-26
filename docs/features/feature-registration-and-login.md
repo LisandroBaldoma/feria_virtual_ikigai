@@ -103,6 +103,28 @@ Persistir las identidades externas por proveedor e ID de usuario del proveedor. 
 - Creación de tienda y conversión efectiva a proveedor: dependen de la funcionalidad de tienda; no se resuelven desde el registro o inicio de sesión.
 - Doble factor, passkeys y recuperación de contraseña: existen como capacidades del Starter Kit, pero no son requisitos documentados de esta funcionalidad y no se propone modificarlas en esta etapa.
 
+## Desarrollo local con Google
+
+El acceso local único utiliza `http://localhost/feria-virtual-ikigai/public/`.
+El archivo `.env` local debe definir
+`APP_URL=http://localhost/feria-virtual-ikigai/public/`, no debe definir
+`ASSET_URL`, y debe mantener `SESSION_DOMAIN=null` y
+`SESSION_SECURE_COOKIE=false` para que la sesión web que valida el estado de
+Socialite se conserve durante el retorno de Google.
+
+Las credenciales de Google se mantienen exclusivamente en el entorno local
+mediante `GOOGLE_CLIENT_ID` y `GOOGLE_CLIENT_SECRET`. El callback se configura
+con `GOOGLE_REDIRECT_URI=http://localhost/feria-virtual-ikigai/public/auth/google/callback`.
+
+En Google Cloud, registrar esta URI de redirección autorizada:
+
+`http://localhost/feria-virtual-ikigai/public/auth/google/callback`
+
+El inicio de sesión usa `GET /auth/google` y el callback anterior. La
+vinculación de una cuenta Google ya autenticada se inicia en
+`http://localhost/feria-virtual-ikigai/public/settings/social-identities/google`, pero reutiliza el
+mismo callback; no se registra una segunda URI de redirección.
+
 ## Fuentes
 
 - `AGENTS.md`, instrucciones de documentación y alcance.

@@ -15,6 +15,10 @@ La aplicación utilizará:
 \- Tailwind CSS para estilos.  
 \- MySQL como base de datos relacional.
 
+En desarrollo local, Laragon proporcionará PHP, MySQL y Apache. La aplicación
+se atenderá en `http://localhost/feria-virtual-ikigai/public/`; no dependerá de
+`php artisan serve`, Virtual Hosts ni del dominio `.test` de Laragon.
+
 La solución será una única aplicación que atenderá:
 
 \---

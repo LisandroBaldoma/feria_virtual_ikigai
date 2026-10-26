@@ -50,6 +50,7 @@ class FortifyServiceProvider extends ServiceProvider
     {
         Fortify::loginView(fn (Request $request) => Inertia::render('auth/login', [
             'canResetPassword' => Features::enabled(Features::resetPasswords()),
+            'googleRedirectUrl' => route('google.redirect'),
             'status' => $request->session()->get('status'),
         ]));
 
@@ -68,6 +69,7 @@ class FortifyServiceProvider extends ServiceProvider
         ]));
 
         Fortify::registerView(fn () => Inertia::render('auth/register', [
+            'googleRedirectUrl' => route('google.redirect'),
             'passwordRules' => Password::defaults()->toPasswordRulesString(),
         ]));
 
