@@ -11,6 +11,7 @@ import { Spinner } from '@/components/ui/spinner';
 import { register } from '@/routes';
 import { store } from '@/routes/login';
 import { request } from '@/routes/password';
+import { redirect as googleRedirect } from '@/routes/google';
 
 type Props = {
     status?: string;
@@ -101,6 +102,13 @@ export default function Login({ status, canResetPassword }: Props) {
                     </>
                 )}
             </Form>
+
+            <a
+                href={googleRedirect.url()}
+                className="text-foreground text-center text-sm underline underline-offset-4"
+            >
+                Continuar con Google
+            </a>
 
             {status && (
                 <div className="mb-4 text-center text-sm font-medium text-green-600">

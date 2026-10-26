@@ -1,3 +1,7 @@
+# Project Instructions
+
+Before planning or implementing a feature, read its document in `docs/features/` when available. If it is missing, prepare it first and wait for review before implementing. Keep it consistent with the main project documents and respect any explicitly deferred work.
+
 ## Project Context
 
 Before planning or implementing features:

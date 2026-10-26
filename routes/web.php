@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Auth\CompleteRegistrationController;
+use App\Http\Controllers\Auth\GoogleAuthenticationController;
+use App\Http\Middleware\EnsureProfileIsComplete;
 use Illuminate\Support\Facades\Route;
 
 Route::inertia('/', 'welcome')->name('home');
@@ -18,7 +21,15 @@ Route::inertia('/tiendas-stores-react', 'tiendas-stores')->name('tiendas-stores-
 
 Route::inertia('/component-showcase', 'component-showcase')->name('component-showcase');
 
-Route::middleware(['auth', 'verified'])->group(function () {
+Route::get('auth/google', [GoogleAuthenticationController::class, 'redirect'])->name('google.redirect');
+Route::get('auth/google/callback', [GoogleAuthenticationController::class, 'callback'])->name('google.callback');
+
+Route::middleware('auth')->group(function () {
+    Route::get('complete-registration', [CompleteRegistrationController::class, 'edit'])->name('registration.complete');
+    Route::patch('complete-registration', [CompleteRegistrationController::class, 'update'])->name('registration.complete.update');
+});
+
+Route::middleware(['auth', EnsureProfileIsComplete::class])->group(function () {
     Route::inertia('dashboard', 'dashboard')->name('dashboard');
 });
 

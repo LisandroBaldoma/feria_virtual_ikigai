@@ -1,4 +1,4 @@
-# **Feature 01 — Inicialización y configuración base del proyecto**
+# **Feature 00 — Inicialización y configuración base del proyecto**
 
 ## **1\. Descripción breve**
 
