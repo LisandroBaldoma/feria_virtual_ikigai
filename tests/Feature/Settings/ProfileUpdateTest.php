@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\SocialIdentity;
 use App\Models\User;
 
 test('profile page is displayed', function () {
@@ -10,6 +11,20 @@ test('profile page is displayed', function () {
         ->get(route('profile.edit'));
 
     $response->assertOk();
+    $response->assertInertia(fn ($page) => $page
+        ->where('hasGoogleIdentity', false)
+    );
+});
+
+test('profile shows when Google is linked', function () {
+    $user = User::factory()->create();
+    SocialIdentity::factory()->for($user)->create();
+
+    $this->actingAs($user)
+        ->get(route('profile.edit'))
+        ->assertInertia(fn ($page) => $page
+            ->where('hasGoogleIdentity', true)
+        );
 });
 
 test('profile information can be updated', function () {

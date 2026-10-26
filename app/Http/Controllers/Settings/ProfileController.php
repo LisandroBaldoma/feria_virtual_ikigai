@@ -19,6 +19,10 @@ class ProfileController extends Controller
     public function edit(Request $request): Response
     {
         return Inertia::render('settings/profile', [
+            'googleLinkUrl' => route('google.link'),
+            'hasGoogleIdentity' => $request->user()->socialIdentities()
+                ->where('provider', 'google')
+                ->exists(),
         ]);
     }
 

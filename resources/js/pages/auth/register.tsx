@@ -47,13 +47,32 @@ export default function Register({ passwordRules, googleRedirectUrl }: Props) {
 
                             <div className="grid gap-2">
                                 <Label htmlFor="last_name">Apellido</Label>
-                                <Input id="last_name" type="text" required tabIndex={2} autoComplete="family-name" name="last_name" placeholder="Apellido" />
+                                <Input
+                                    id="last_name"
+                                    type="text"
+                                    required
+                                    tabIndex={2}
+                                    autoComplete="family-name"
+                                    name="last_name"
+                                    placeholder="Apellido"
+                                />
                                 <InputError message={errors.last_name} />
                             </div>
 
                             <div className="grid gap-2">
-                                <Label htmlFor="username">Nombre de usuario</Label>
-                                <Input id="username" type="text" required minLength={3} maxLength={50} tabIndex={3} name="username" placeholder="Nombre visible" />
+                                <Label htmlFor="username">
+                                    Nombre de usuario
+                                </Label>
+                                <Input
+                                    id="username"
+                                    type="text"
+                                    required
+                                    minLength={3}
+                                    maxLength={50}
+                                    tabIndex={3}
+                                    name="username"
+                                    placeholder="Nombre visible"
+                                />
                                 <InputError message={errors.username} />
                             </div>
 

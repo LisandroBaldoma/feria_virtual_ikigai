@@ -62,3 +62,22 @@ test('Google users can finish registration with their missing profile data', fun
 
     expect($user->refresh()->hasCompletedProfile())->toBeTrue();
 });
+
+test('authenticated users can link a Google identity from their profile', function () {
+    $user = User::factory()->create();
+    Socialite::fake('google', GoogleUser::fake(['id' => 'google-999', 'email' => 'other@example.com']));
+
+    $this->actingAs($user)
+        ->get(route('google.link'))
+        ->assertRedirect('https://socialite.fake/google/authorize');
+
+    $this->actingAs($user)
+        ->get(route('google.callback'))
+        ->assertRedirect(route('profile.edit'));
+
+    $this->assertDatabaseHas('social_identities', [
+        'user_id' => $user->id,
+        'provider' => 'google',
+        'provider_id' => 'google-999',
+    ]);
+});

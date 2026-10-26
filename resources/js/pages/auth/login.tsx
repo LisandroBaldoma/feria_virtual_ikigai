@@ -18,7 +18,11 @@ type Props = {
     googleRedirectUrl: string;
 };
 
-export default function Login({ status, canResetPassword, googleRedirectUrl }: Props) {
+export default function Login({
+    status,
+    canResetPassword,
+    googleRedirectUrl,
+}: Props) {
     return (
         <>
             <Head title="Log in" />

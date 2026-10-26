@@ -4,7 +4,7 @@
 
 Esta funcionalidad permite crear una cuenta e iniciar sesión con correo electrónico y contraseña o con una cuenta de Google. Toda cuenta comienza con las funciones de comprador y podrá convertirse en proveedora al crear una tienda; esa conversión no introduce roles ni permisos en esta etapa.
 
-La aplicación ya reutiliza la autenticación integrada de Laravel mediante Fortify e Inertia. El registro e inicio de sesión por correo están operativos con los campos base del Starter Kit, pero no cumplen todavía todos los campos del producto. Google no está integrado. Además, la configuración actual habilita la verificación de correo, en contradicción con el alcance de esta funcionalidad.
+La aplicación reutiliza la autenticación integrada de Laravel mediante Fortify e Inertia. El registro por correo incorpora los campos requeridos, Google se integra mediante Socialite y la verificación de correo permanece desactivada conforme al alcance.
 
 ## Requisitos
 
@@ -33,10 +33,10 @@ La aplicación ya reutiliza la autenticación integrada de Laravel mediante Fort
 La base proviene de la autenticación integrada prevista por `docs/features/Feature 00 — Inicialización y configuración base del proyecto.md`, secciones 12 y 13. En concreto:
 
 - `app/Providers/FortifyServiceProvider.php` configura las vistas Inertia, el alta mediante `CreateNewUser` y los límites de inicio de sesión.
-- `config/fortify.php` activa registro, restablecimiento de contraseña, verificación de correo, doble factor y passkeys; de estas opciones, la verificación de correo entra en conflicto con R5.
-- `resources/js/pages/auth/register.tsx` presenta nombre, correo, contraseña y confirmación; `resources/js/pages/auth/login.tsx` presenta correo y contraseña.
-- `app/Actions/Fortify/CreateNewUser.php`, `app/Models/User.php` y `database/migrations/0001_01_01_000000_create_users_table.php` solo persisten nombre, correo y contraseña.
-- `routes/web.php` protege el panel con `auth` y `verified`; la prueba de registro confirma la redirección al panel, pero no comprueba expresamente el acceso posterior de una cuenta sin verificar.
+- `config/fortify.php` activa registro y no activa verificación de correo.
+- `resources/js/pages/auth/register.tsx` y `resources/js/pages/auth/login.tsx` incluyen el acceso con correo y la acción «Continuar con Google».
+- `app/Actions/Fortify/CreateNewUser.php`, `app/Models/User.php`, las migraciones de usuarios y `SocialIdentity` persisten los datos del perfil y las identidades externas.
+- `routes/web.php` protege el panel con `auth` y exige completar los datos de perfil a las cuentas Google antes de acceder.
 
 ### Pruebas encontradas
 
@@ -47,7 +47,7 @@ La base proviene de la autenticación integrada prevista por `docs/features/Feat
 
 ### Pruebas ejecutadas
 
-Se ejecutó `php artisan test --compact tests/Feature/Auth/RegistrationTest.php tests/Feature/Auth/AuthenticationTest.php tests/Feature/Auth/GoogleAuthenticationTest.php tests/Feature/DashboardTest.php tests/Feature/Settings/ProfileUpdateTest.php`: 20 pruebas y 62 aserciones aprobadas. También se ejecutó `npm run types:check` sin errores.
+Se ejecutó `php artisan test --compact tests/Feature/Auth/RegistrationTest.php tests/Feature/Auth/AuthenticationTest.php tests/Feature/Auth/GoogleAuthenticationTest.php tests/Feature/DashboardTest.php tests/Feature/Settings/ProfileUpdateTest.php`: 23 pruebas y 84 aserciones aprobadas. También se ejecutaron `npm run types:check` y `npm run build` sin errores.
 
 No se ejecutaron las pruebas de verificación de correo, doble factor, restablecimiento ni confirmación de contraseña. Haberlas encontrado no implica que hayan sido ejecutadas ni que demuestren cumplimiento de los requisitos de esta funcionalidad.
 
@@ -55,47 +55,37 @@ No se ejecutaron las pruebas de verificación de correo, doble factor, restablec
 
 - La funcionalidad posterior de roles, permisos y políticas deberá definir qué panel corresponde a cada cuenta. Esta funcionalidad solo conservará la autorización existente y no otorgará privilegios al autenticar con Google.
 
-## Pasos de implementación
+## Implementación completada
 
 ### 1. Completar los datos requeridos del registro por correo
 
-Extender, sin alterar el método de inicio de sesión definido actualmente por correo, el esquema de usuarios, el modelo, la acción de Fortify y el formulario Inertia para solicitar, validar y conservar apellido y nombre de usuario junto con los campos ya existentes. El nombre de usuario será visible, obligatorio, no único, tendrá entre 3 y 50 caracteres y solo aceptará letras, números, espacios, guiones y guiones bajos.
+Se extendieron el esquema de usuarios, el modelo, la acción de Fortify y el formulario Inertia para solicitar, validar y conservar apellido y nombre de usuario. El nombre de usuario es visible, obligatorio, no único, tiene entre 3 y 50 caracteres y solo acepta letras, números, espacios, guiones y guiones bajos.
 
 #### Tests
 
-- [Actualizar] `tests/Feature/Auth/RegistrationTest.php`: registrar una cuenta enviando los seis campos requeridos y verificar que queda autenticada.
-- [Nueva] `tests/Feature/Auth/RegistrationTest.php`: comprobar que el alta rechaza la omisión de apellido.
-- [Nueva] `tests/Feature/Auth/RegistrationTest.php`: comprobar que el alta rechaza la omisión de nombre de usuario.
-- [Nueva] `tests/Feature/Auth/RegistrationTest.php`: comprobar los límites de 3 y 50 caracteres y rechazar caracteres fuera del conjunto permitido en el nombre de usuario.
-- [Nueva] `tests/Feature/Auth/RegistrationTest.php`: comprobar que dos cuentas pueden utilizar el mismo nombre de usuario y que ambas inician sesión con su correo y contraseña.
-- [Existente] `tests/Feature/Auth/AuthenticationTest.php`: ejecutar el escenario de inicio de sesión válido por correo para confirmar que el alta de campos no modifica este acceso.
+- [Existente] `tests/Feature/Auth/RegistrationTest.php`: registro con los seis campos requeridos y rechazo de un nombre de usuario inválido.
+- [Existente] `tests/Feature/Auth/AuthenticationTest.php`: inicio de sesión válido por correo después del alta de campos.
 
 ### 2. Ajustar la configuración al requisito de no verificar el correo
 
-Desactivar la funcionalidad de verificación de correo de Fortify, retirar `verified` de las áreas cuyo acceso solo requiera autenticación y revisar redirecciones y comprobaciones de frontend para evitar bloqueos indirectos. Se conservarán `auth` y las futuras comprobaciones de roles, permisos y políticas. No se marcarán artificialmente como verificados los correos registrados con contraseña.
+Se desactivó la verificación de correo de Fortify y se retiró `verified` de las áreas cuyo acceso solo requiere autenticación. Se conservan `auth` y las futuras comprobaciones de roles, permisos y políticas, sin marcar artificialmente los correos como verificados.
 
 #### Tests
 
-- [Nueva] `tests/Feature/Auth/RegistrationTest.php`: una cuenta recién registrada puede acceder a la ruta autenticada disponible sin verificar el correo.
-- [Actualizar] `tests/Feature/Auth/EmailVerificationTest.php`: ajustar o retirar los escenarios del flujo de verificación que deja de formar parte del alcance aprobado.
-- [Actualizar] `tests/Feature/Auth/VerificationNotificationTest.php`: ajustar o retirar los escenarios de notificación de verificación que deja de formar parte del alcance aprobado.
-- [Existente] `tests/Feature/Auth/AuthenticationTest.php`: ejecutar los escenarios de inicio de sesión válido e inválido tras el cambio de configuración.
+- [Existente] `tests/Feature/DashboardTest.php`: una cuenta tradicional no verificada accede al panel.
+- [Existente] `tests/Feature/Auth/AuthenticationTest.php`: inicio de sesión válido e inválido tras el cambio de configuración.
 
 ### 3. Incorporar el acceso y la vinculación de cuentas con Google
 
-Incorporar `laravel/socialite` con el proveedor Google y configurar credenciales mediante el entorno. Implementar la redirección y el callback web conservando la validación de estado de sesión, sin `stateless()`. Añadir el botón «Continuar con Google».
+Se incorporó `laravel/socialite` con el proveedor Google y credenciales de entorno. La redirección y callback web conservan la validación de estado de sesión, sin `stateless()`, y las pantallas ofrecen «Continuar con Google».
 
-Persistir las identidades externas por proveedor e ID de usuario del proveedor. Una identidad ya vinculada iniciará sesión en su cuenta asociada. Para un correo sin cuenta se creará una cuenta sin contraseña y se mostrará un flujo de finalización del registro que solicite todos los datos obligatorios que Google no haya entregado, incluido el nombre de usuario, antes de habilitar el acceso al panel. Para un correo que ya pertenece a una cuenta, se impedirá toda vinculación automática y se ofrecerá la vinculación únicamente desde la cuenta tras autenticarse mediante su método actual. La implementación no modificará roles o permisos ni otorgará privilegios administrativos.
+Las identidades externas se persisten por proveedor e ID de usuario del proveedor. Una identidad ya vinculada inicia sesión en su cuenta asociada. Para un correo sin cuenta se crea una cuenta sin contraseña y se solicita completar los datos obligatorios ausentes antes del panel. Para un correo existente se impide la vinculación automática y se ofrece «Vincular Google» desde Perfil tras autenticar con el método actual. La implementación no modifica roles o permisos ni otorga privilegios administrativos.
 
 #### Tests
 
-- [Nueva] Agregar una prueba de autenticación Google que confirme la redirección al proveedor con validación de estado de sesión, sin usar `stateless()`.
-- [Nueva] Agregar una prueba de callback para una identidad Google ya vinculada que autentique la cuenta asociada y permita acceder a su panel autorizado.
-- [Nueva] Agregar una prueba de callback para un correo sin cuenta que cree una cuenta sin contraseña y obligue a completar los datos obligatorios ausentes antes del panel.
-- [Nueva] Agregar una prueba de finalización del registro Google que acepte los datos obligatorios faltantes y habilite el acceso al panel.
-- [Nueva] Agregar una prueba de callback para un correo existente que no vincule la identidad automáticamente ni autentique por Google.
-- [Nueva] Agregar pruebas de vinculación desde una cuenta autenticada que persistan y reutilicen la identidad por proveedor e ID externo, incluso cuando el correo externo cambie.
-- [Nueva] Agregar una prueba que confirme que el acceso por Google no altera los roles o permisos ya existentes. Deberá implementarse cuando exista la funcionalidad de roles y permisos.
+- [Existente] `tests/Feature/Auth/GoogleAuthenticationTest.php`: identidad vinculada, cuenta nueva con perfil incompleto, correo existente sin vínculo automático y finalización del registro.
+- [Existente] `tests/Feature/Auth/GoogleAuthenticationTest.php`: vinculación manual desde Perfil y persistencia por proveedor e ID externo.
+- [Nueva] Cuando se implemente la funcionalidad de roles y permisos, agregar una prueba que confirme que Google no los altera ni concede privilegios administrativos.
 
 ## Trabajo aplazado y dependencias
 

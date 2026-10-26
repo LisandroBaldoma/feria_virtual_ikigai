@@ -11,10 +11,13 @@ import type { Auth } from '@/types';
 
 type PageProps = {
     auth: Auth;
+    googleLinkUrl: string;
+    hasGoogleIdentity: boolean;
 };
 
 export default function Profile() {
-    const { auth } = usePage<PageProps>().props;
+    const { auth, googleLinkUrl, hasGoogleIdentity } =
+        usePage<PageProps>().props;
 
     return (
         <>
@@ -51,22 +54,45 @@ export default function Profile() {
                                     placeholder="Full name"
                                 />
 
-                             <InputError
-                                 className="mt-2"
-                                 message={errors.name}
-                             />
-                         </div>
-
-                            <div className="grid gap-2">
-                                <Label htmlFor="last_name">Apellido</Label>
-                                <Input id="last_name" className="mt-1 block w-full" defaultValue={auth.user.last_name ?? ''} name="last_name" required autoComplete="family-name" />
-                                <InputError className="mt-2" message={errors.last_name} />
+                                <InputError
+                                    className="mt-2"
+                                    message={errors.name}
+                                />
                             </div>
 
                             <div className="grid gap-2">
-                                <Label htmlFor="username">Nombre de usuario</Label>
-                                <Input id="username" className="mt-1 block w-full" defaultValue={auth.user.username ?? ''} name="username" required minLength={3} maxLength={50} />
-                                <InputError className="mt-2" message={errors.username} />
+                                <Label htmlFor="last_name">Apellido</Label>
+                                <Input
+                                    id="last_name"
+                                    className="mt-1 block w-full"
+                                    defaultValue={auth.user.last_name ?? ''}
+                                    name="last_name"
+                                    required
+                                    autoComplete="family-name"
+                                />
+                                <InputError
+                                    className="mt-2"
+                                    message={errors.last_name}
+                                />
+                            </div>
+
+                            <div className="grid gap-2">
+                                <Label htmlFor="username">
+                                    Nombre de usuario
+                                </Label>
+                                <Input
+                                    id="username"
+                                    className="mt-1 block w-full"
+                                    defaultValue={auth.user.username ?? ''}
+                                    name="username"
+                                    required
+                                    minLength={3}
+                                    maxLength={50}
+                                />
+                                <InputError
+                                    className="mt-2"
+                                    message={errors.username}
+                                />
                             </div>
 
                             <div className="grid gap-2">
@@ -89,7 +115,6 @@ export default function Profile() {
                                 />
                             </div>
 
-
                             <div className="flex items-center gap-4">
                                 <Button
                                     disabled={processing}
@@ -101,6 +126,23 @@ export default function Profile() {
                         </>
                     )}
                 </Form>
+            </div>
+
+            <div className="space-y-4">
+                <Heading
+                    variant="small"
+                    title="Google"
+                    description="Vinculá tu cuenta de Google para usarla al iniciar sesión."
+                />
+                {hasGoogleIdentity ? (
+                    <p className="text-sm font-medium text-green-600">
+                        Google vinculada
+                    </p>
+                ) : (
+                    <Button variant="outline" asChild>
+                        <a href={googleLinkUrl}>Vincular Google</a>
+                    </Button>
+                )}
             </div>
 
             <DeleteUser />
