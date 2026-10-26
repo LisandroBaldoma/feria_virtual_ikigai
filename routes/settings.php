@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\Auth\GoogleAuthenticationController;
 use App\Http\Controllers\Settings\ProfileController;
 use App\Http\Controllers\Settings\SecurityController;
+use App\Http\Middleware\EnsureProfileIsComplete;
 use Illuminate\Auth\Middleware\RequirePassword;
 use Illuminate\Support\Facades\Route;
 
@@ -10,9 +12,10 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('settings/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('settings/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::get('settings/social-identities/google', [GoogleAuthenticationController::class, 'redirect'])->name('google.link');
 });
 
-Route::middleware(['auth', 'verified'])->group(function () {
+Route::middleware(['auth', EnsureProfileIsComplete::class])->group(function () {
     Route::delete('settings/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('settings/security', [SecurityController::class, 'edit'])

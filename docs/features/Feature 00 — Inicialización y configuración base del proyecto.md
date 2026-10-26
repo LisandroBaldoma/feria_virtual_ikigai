@@ -1,4 +1,4 @@
-# **Feature 01 — Inicialización y configuración base del proyecto**
+# **Feature 00 — Inicialización y configuración base del proyecto**
 
 ## **1\. Descripción breve**
 
@@ -28,8 +28,8 @@ Al finalizar esta feature deberán estar funcionando:
 * Laravel Built-in Authentication.  
 * Pest.  
 * Laravel Boost.  
-* Entorno local mediante Laragon.  
-* Dominio local `.test`.
+* Entorno local con PHP y MySQL proporcionados por Laragon.  
+* Aplicación local servida por Apache de Laragon en `http://localhost/feria-virtual-ikigai/public/`.
 
 ---
 
@@ -109,15 +109,15 @@ Directorio local esperado:
 
 `C:\laragon\www\feria-virtual-ikigai`
 
-Dominio local esperado:
+URL local esperada:
 
-`http://feria-virtual-ikigai.test`
+`http://localhost/feria-virtual-ikigai/public/`
 
-El dominio `.test` deberá ser proporcionado por la configuración de Virtual Hosts de Laragon.
+La aplicación se atenderá mediante Apache de Laragon desde su directorio
+`public`; no requerirá `php artisan serve`, Virtual Hosts ni un dominio `.test`.
 
-La aplicación no deberá depender de rutas del tipo:
-
-`http://localhost/feria-virtual-ikigai/public`
+La aplicación deberá conservar este subdirectorio en `APP_URL` y en las URLs
+externas de callback configuradas para el entorno local.
 
 ---
 
@@ -199,15 +199,15 @@ Laragon deberá proporcionar:
 
 * PHP.  
 * MySQL.  
-* Servidor web.  
-* Virtual Hosts.  
-* Resolución local de dominios `.test`.
 
 La intención es conseguir una experiencia de desarrollo equivalente conceptualmente a la proporcionada por Herd, sin introducir dependencias de Laragon dentro del código de la aplicación.
 
-El proyecto deberá poder abrirse mediante:
+Apache de Laragon atenderá la aplicación en:
 
-`http://feria-virtual-ikigai.test`
+`http://localhost/feria-virtual-ikigai/public/`
+
+No se utilizará `php artisan serve`. Para cambios de frontend, se podrá usar
+`npm run dev` o generar los assets con `npm run build`.
 
 ---
 
@@ -501,7 +501,7 @@ La feature se considerará implementada cuando se cumplan todos los siguientes c
 * Laravel Boost está instalado como dependencia de desarrollo.  
 * Laravel Boost está inicializado.  
 * Boost queda preparado para utilizarse con Codex.  
-* La aplicación funciona desde `feria-virtual-ikigai.test`.  
+* La aplicación funciona desde `http://localhost/feria-virtual-ikigai/public/`.
 * No se implementó lógica de negocio fuera del alcance de esta feature.
 
 ---
@@ -534,7 +534,7 @@ Build generado sin errores.
 
 También deberá comprobarse manualmente:
 
-http://feria-virtual-ikigai.test
+http://localhost/feria-virtual-ikigai/public/
 
 y verificar:
 
@@ -566,7 +566,6 @@ Feria Virtual IKIGAI
 ├── Pest ..................... OK  
 ├── Laravel Boost ............ OK  
 ├── Codex integration ........ OK  
-└── Laragon .test ............ OK
+└── Laravel Apache/Laragon ... OK
 
 A partir de este punto podrán comenzar a implementarse las features funcionales del producto utilizando esta base técnica.
-

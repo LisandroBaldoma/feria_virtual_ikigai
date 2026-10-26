@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\SocialIdentity;
 use App\Models\User;
 
 test('profile page is displayed', function () {
@@ -10,6 +11,20 @@ test('profile page is displayed', function () {
         ->get(route('profile.edit'));
 
     $response->assertOk();
+    $response->assertInertia(fn ($page) => $page
+        ->where('hasGoogleIdentity', false)
+    );
+});
+
+test('profile shows when Google is linked', function () {
+    $user = User::factory()->create();
+    SocialIdentity::factory()->for($user)->create();
+
+    $this->actingAs($user)
+        ->get(route('profile.edit'))
+        ->assertInertia(fn ($page) => $page
+            ->where('hasGoogleIdentity', true)
+        );
 });
 
 test('profile information can be updated', function () {
@@ -19,6 +34,8 @@ test('profile information can be updated', function () {
         ->actingAs($user)
         ->patch(route('profile.update'), [
             'name' => 'Test User',
+            'last_name' => 'Example',
+            'username' => 'Test User',
             'email' => 'test@example.com',
         ]);
 
@@ -29,6 +46,8 @@ test('profile information can be updated', function () {
     $user->refresh();
 
     expect($user->name)->toBe('Test User');
+    expect($user->last_name)->toBe('Example');
+    expect($user->username)->toBe('Test User');
     expect($user->email)->toBe('test@example.com');
     expect($user->email_verified_at)->toBeNull();
 });
@@ -40,6 +59,8 @@ test('email verification status is unchanged when the email address is unchanged
         ->actingAs($user)
         ->patch(route('profile.update'), [
             'name' => 'Test User',
+            'last_name' => $user->last_name,
+            'username' => $user->username,
             'email' => $user->email,
         ]);
 
