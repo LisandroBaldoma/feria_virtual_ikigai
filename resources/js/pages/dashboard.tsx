@@ -2,7 +2,7 @@ import { Head, Link } from '@inertiajs/react';
 import { Button } from '@/components/ui/button';
 import { PlaceholderPattern } from '@/components/ui/placeholder-pattern';
 import { dashboard } from '@/routes';
-import stores from '@/routes/stores';
+import vendor from '@/routes/vendor';
 
 export default function Dashboard() {
     return (
@@ -15,11 +15,13 @@ export default function Dashboard() {
                             Tu espacio de proveedor
                         </h1>
                         <p className="text-muted-foreground text-sm">
-                            Creá o administrá la información de tu tienda.
+                            Accedé a la administración de tu tienda.
                         </p>
                     </div>
                     <Button asChild>
-                        <Link href={stores.edit()}>Mi tienda</Link>
+                        <Link href={vendor.dashboard()}>
+                            Panel de proveedor
+                        </Link>
                     </Button>
                 </div>
                 <div className="grid auto-rows-min gap-4 md:grid-cols-3">

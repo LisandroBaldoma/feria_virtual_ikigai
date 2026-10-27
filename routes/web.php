@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\CompleteRegistrationController;
 use App\Http\Controllers\Auth\GoogleAuthenticationController;
 use App\Http\Controllers\StoreController;
+use App\Http\Controllers\VendorDashboardController;
 use App\Http\Middleware\EnsureProfileIsComplete;
 use Illuminate\Support\Facades\Route;
 
@@ -32,6 +33,7 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware(['auth', EnsureProfileIsComplete::class])->group(function () {
     Route::inertia('dashboard', 'dashboard')->name('dashboard');
+    Route::get('panel-proveedor', VendorDashboardController::class)->name('vendor.dashboard');
 
     Route::get('mi-tienda/crear', [StoreController::class, 'create'])->name('stores.create');
     Route::post('mi-tienda', [StoreController::class, 'store'])->name('stores.store');
