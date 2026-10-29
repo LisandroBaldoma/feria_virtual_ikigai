@@ -65,28 +65,28 @@ export default function VendorDashboard({ store }: Props) {
 
             <div className="mx-auto w-full max-w-6xl space-y-8 p-4 md:p-6">
                 <section className="bg-card overflow-hidden rounded-2xl border shadow-sm">
-                    <div className="text-primary-foreground bg-primary px-6 py-8 md:px-8">
+                    <div className="bg-primary px-6 py-8 text-primary-foreground md:px-8">
                         <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
                             <div className="flex items-center gap-4">
                                 {store.profileImageUrl ? (
                                     <img
                                         src={store.profileImageUrl}
                                         alt="Imagen de perfil de la tienda"
-                                        className="ring-primary-foreground/30 size-16 rounded-2xl object-cover ring-2"
+                                        className="size-16 rounded-2xl object-cover ring-2 ring-primary-foreground/30"
                                     />
                                 ) : (
-                                    <div className="bg-primary-foreground/15 flex size-16 items-center justify-center rounded-2xl text-xl font-semibold">
+                                    <div className="flex size-16 items-center justify-center rounded-2xl bg-primary-foreground/15 text-xl font-semibold">
                                         {store.title.slice(0, 1).toUpperCase()}
                                     </div>
                                 )}
                                 <div>
-                                    <p className="text-primary-foreground/75 text-sm">
+                                    <p className="text-sm text-primary-foreground/75">
                                         Panel de proveedor
                                     </p>
                                     <h1 className="text-2xl font-semibold tracking-tight">
                                         {store.title}
                                     </h1>
-                                    <p className="text-primary-foreground/75 text-sm">
+                                    <p className="text-sm text-primary-foreground/75">
                                         {store.subdomain}
                                     </p>
                                 </div>
