@@ -4,6 +4,7 @@ export type User = {
     last_name: string | null;
     username: string | null;
     email: string;
+    is_platform_owner: boolean;
     avatar?: string;
     email_verified_at: string | null;
     two_factor_enabled?: boolean;

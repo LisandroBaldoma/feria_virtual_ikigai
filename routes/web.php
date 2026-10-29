@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\CompleteRegistrationController;
 use App\Http\Controllers\Auth\GoogleAuthenticationController;
+use App\Http\Controllers\PlatformOwnerDashboardController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\VendorDashboardController;
 use App\Http\Middleware\EnsureProfileIsComplete;
@@ -29,6 +30,10 @@ Route::get('auth/google/callback', [GoogleAuthenticationController::class, 'call
 Route::middleware('auth')->group(function () {
     Route::get('complete-registration', [CompleteRegistrationController::class, 'edit'])->name('registration.complete');
     Route::patch('complete-registration', [CompleteRegistrationController::class, 'update'])->name('registration.complete.update');
+});
+
+Route::middleware(['auth', 'can:view-platform-owner-dashboard'])->group(function () {
+    Route::get('panel-plataforma', PlatformOwnerDashboardController::class)->name('owner.dashboard');
 });
 
 Route::middleware(['auth', EnsureProfileIsComplete::class])->group(function () {

@@ -31,6 +31,14 @@ La plataforma utilizará una arquitectura monolítica con una sola aplicación y
 
 \#\# 6\. Control de acceso
 
+El dueño de la plataforma se identifica mediante el atributo booleano
+`is_platform_owner` de la cuenta de usuario. Las rutas administrativas globales
+se protegerán mediante Gates de Laravel.
+
+La condición de proveedor se determina por la relación de la cuenta con su
+tienda y las acciones sobre recursos de una tienda se protegerán mediante
+Policies. Cualquier usuario autenticado podrá actuar como comprador.
+
 \---
 
 \#\# 13\. Autenticación
@@ -63,7 +71,9 @@ La información de todas las tiendas coexistirá dentro de la misma base de dato
 
 La arquitectura deberá mantener una separación lógica estricta entre la información de diferentes tiendas.
 
-La información global de la plataforma, como categorías y configuración de comisión, deberá poder compartirse entre tiendas cuando corresponda.
+La información global de la plataforma, como las categorías de tiendas y la
+configuración de suscripciones, deberá poder compartirse entre tiendas cuando
+corresponda.
 
 La información histórica de compras deberá conservarse incluso cuando un producto deje de estar disponible o una tienda sea suspendida o desactivada.
 
