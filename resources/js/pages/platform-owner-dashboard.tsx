@@ -1,4 +1,4 @@
-import { Head } from '@inertiajs/react';
+import { Head, Link } from '@inertiajs/react';
 import {
     BadgeCheck,
     ClipboardList,
@@ -11,12 +11,15 @@ import {
     Users,
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import {
     Card,
+    CardContent,
     CardDescription,
     CardHeader,
     CardTitle,
 } from '@/components/ui/card';
+import categories from '@/routes/categories';
 import owner from '@/routes/owner';
 
 type Props = {
@@ -33,12 +36,6 @@ const futureAreas = [
         title: 'Tiendas y proveedores',
         description: 'Revisá, aprobá y administrá las tiendas del marketplace.',
         icon: Store,
-    },
-    {
-        title: 'Categorías de tiendas',
-        description:
-            'Organizá las categorías globales disponibles para las tiendas.',
-        icon: Tags,
     },
     {
         title: 'Pedidos',
@@ -140,6 +137,30 @@ export default function PlatformOwnerDashboard({ overview }: Props) {
                         </p>
                     </div>
                     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                        <Card className="gap-4">
+                            <CardHeader>
+                                <div className="flex items-start justify-between gap-4">
+                                    <div className="flex size-10 items-center justify-center rounded-lg bg-primary/10">
+                                        <Tags className="size-5 text-primary" />
+                                    </div>
+                                    <Badge>Disponible</Badge>
+                                </div>
+                                <CardTitle className="mt-2">
+                                    Categorías de tiendas
+                                </CardTitle>
+                                <CardDescription>
+                                    Organizá las categorías globales disponibles
+                                    para las tiendas.
+                                </CardDescription>
+                            </CardHeader>
+                            <CardContent>
+                                <Button asChild>
+                                    <Link href={categories.index()}>
+                                        Administrar categorías
+                                    </Link>
+                                </Button>
+                            </CardContent>
+                        </Card>
                         {futureAreas.map(
                             ({ title, description, icon: Icon }) => (
                                 <Card key={title} className="gap-4 opacity-75">
