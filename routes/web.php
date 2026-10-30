@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\CompleteRegistrationController;
 use App\Http\Controllers\Auth\GoogleAuthenticationController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PlatformOwnerDashboardController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\VendorDashboardController;
@@ -34,6 +35,10 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware(['auth', 'can:view-platform-owner-dashboard'])->group(function () {
     Route::get('panel-plataforma', PlatformOwnerDashboardController::class)->name('owner.dashboard');
+    Route::resource('panel-plataforma/categorias', CategoryController::class)
+        ->only(['index', 'store', 'update', 'destroy'])
+        ->parameters(['categorias' => 'category'])
+        ->names('categories');
 });
 
 Route::middleware(['auth', EnsureProfileIsComplete::class])->group(function () {

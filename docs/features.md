@@ -70,32 +70,32 @@ El dueño de la plataforma dispone de un panel global para supervisar y administ
 1\. El dueño accede a su panel de administración.  
 2\. Consulta información global del marketplace.  
 3\. Administra tiendas y proveedores.  
-4\. Administra categorías y pedidos.  
-5\. Configura la comisión global.  
+4\. Administra categorías de tiendas y pedidos.
+5\. Configura los valores de las suscripciones y verifica sus pagos.
 6\. Modera reseñas.  
-7\. Selecciona productos y tiendas destacadas.
+7\. Selecciona tiendas destacadas y supervisa los productos destacados por proveedores.
 
 \#\#\# Descripción general de la interfaz de usuario  
-El panel muestra secciones de administración global para tiendas, proveedores, categorías, pedidos, comisiones, reseñas y elementos destacados. Desde ahí el dueño puede actuar sobre información de cualquier tienda.
+El panel muestra secciones de administración global para tiendas, proveedores, categorías de tiendas, pedidos, suscripciones, reseñas y elementos destacados. Desde ahí el dueño puede actuar sobre información de cualquier tienda.
 
 \---
 
 \---
 
-\#\# 5\. Categorías de productos
+\#\# 5\. Categorías de tiendas
 
 \#\#\# Descripción breve  
-Las categorías permiten organizar los productos del marketplace y de cada tienda. Son administradas únicamente por el dueño de la plataforma y cada producto debe pertenecer a una sola categoría.
+Las categorías permiten organizar las tiendas del marketplace. Son administradas únicamente por el dueño de la plataforma y cada tienda debe pertenecer a una sola categoría.
 
 \#\#\# Flujo de usuario  
 1\. El dueño de la plataforma accede a la administración de categorías.  
 2\. Crea o administra las categorías disponibles.  
-3\. El proveedor, al crear o editar un producto, selecciona una de esas categorías.  
-4\. Los compradores utilizan las categorías para explorar y filtrar productos.  
-5\. El marketplace puede mostrar la cantidad de productos disponibles en cada categoría.
+3\. El proveedor, al crear su tienda, selecciona una de esas categorías.
+4\. Los compradores utilizan las categorías para explorar y filtrar tiendas.
+5\. El marketplace puede mostrar la cantidad de tiendas disponibles en cada categoría.
 
 \#\#\# Descripción general de la interfaz de usuario  
-El dueño dispone de una sección de administración de categorías. Los proveedores ven las categorías disponibles al gestionar productos y los compradores las encuentran como opciones de navegación o filtrado.
+El dueño dispone de una sección de administración de categorías. Los proveedores ven las categorías disponibles al crear su tienda y los compradores las encuentran como opciones de navegación o filtrado de tiendas.
 
 \---
 
