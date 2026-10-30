@@ -38,12 +38,6 @@ const futureAreas = [
         icon: Store,
     },
     {
-        title: 'Categorías de tiendas',
-        description:
-            'Organizá las categorías globales disponibles para las tiendas.',
-        icon: Tags,
-    },
-    {
         title: 'Pedidos',
         description:
             'Supervisá los pedidos y su operación en todas las tiendas.',
